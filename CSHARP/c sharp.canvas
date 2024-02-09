@@ -1,13 +1,13 @@
 {
 	"nodes":[
-		{"id":"ac3c2c5a27380f82","type":"file","file":"CSHARP/Content/csharp basics.md","x":-800,"y":-1280,"width":400,"height":400},
-		{"id":"a8e7b32fa5ddc196","type":"file","file":"CSHARP/Content/String Manipulation.md","x":-1360,"y":-1680,"width":400,"height":400},
-		{"id":"d4fa9f5ac787def3","type":"file","file":"CSHARP/Content/Variables.md","x":-1360,"y":-1200,"width":400,"height":400},
-		{"id":"9f794860079c0017","type":"file","file":"CSHARP/Content/Arrays.md","x":-400,"y":-640,"width":400,"height":400},
-		{"id":"b191d817a9ce176e","type":"file","file":"CSHARP/Content/Methods and statements.md","x":-280,"y":-1280,"width":400,"height":400},
-		{"id":"492a7b8218b5231f","type":"file","file":"CSHARP/Content/Loops.md","x":-960,"y":-640,"width":400,"height":400},
-		{"id":"37f7b31dd304c90e","type":"file","file":"CSHARP/Content/OOP Core.md","x":280,"y":-1200,"width":400,"height":400},
-		{"id":"3e32dfbdea679e43","type":"file","file":"CSHARP/Content/Collections.md","x":280,"y":-640,"width":400,"height":400}
+		{"id":"ac3c2c5a27380f82","type":"file","file":"CSHARP/csharp basics.md","x":-800,"y":-1280,"width":400,"height":400},
+		{"id":"a8e7b32fa5ddc196","type":"file","file":"CSHARP/String Manipulation.md","x":-1360,"y":-1680,"width":400,"height":400},
+		{"id":"d4fa9f5ac787def3","type":"file","file":"CSHARP/Variables.md","x":-1360,"y":-1200,"width":400,"height":400},
+		{"id":"9f794860079c0017","type":"file","file":"CSHARP/Arrays.md","x":-400,"y":-640,"width":400,"height":400},
+		{"id":"b191d817a9ce176e","type":"file","file":"CSHARP/Methods and statements.md","x":-280,"y":-1280,"width":400,"height":400},
+		{"id":"492a7b8218b5231f","type":"file","file":"CSHARP/Loops.md","x":-960,"y":-640,"width":400,"height":400},
+		{"id":"37f7b31dd304c90e","type":"file","file":"CSHARP/OOP Core.md","x":280,"y":-1200,"width":400,"height":400},
+		{"id":"3e32dfbdea679e43","type":"file","file":"CSHARP/Collections.md","x":280,"y":-640,"width":400,"height":400}
 	],
 	"edges":[
 		{"id":"8c067b201436efa5","fromNode":"ac3c2c5a27380f82","fromSide":"bottom","toNode":"492a7b8218b5231f","toSide":"top"},
