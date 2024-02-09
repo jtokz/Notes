@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"ac3c2c5a27380f82","type":"file","file":"CSHARP/Content/csharp basics.md","x":-800,"y":-1280,"width":400,"height":400},
+		{"id":"a8e7b32fa5ddc196","type":"file","file":"CSHARP/Content/String Manipulation.md","x":-1360,"y":-1680,"width":400,"height":400},
+		{"id":"d4fa9f5ac787def3","type":"file","file":"CSHARP/Content/Variables.md","x":-1360,"y":-1200,"width":400,"height":400},
+		{"id":"9f794860079c0017","type":"file","file":"CSHARP/Content/Arrays.md","x":-400,"y":-640,"width":400,"height":400},
+		{"id":"b191d817a9ce176e","type":"file","file":"CSHARP/Content/Methods and statements.md","x":-280,"y":-1280,"width":400,"height":400},
+		{"id":"492a7b8218b5231f","type":"file","file":"CSHARP/Content/Loops.md","x":-960,"y":-640,"width":400,"height":400},
+		{"id":"37f7b31dd304c90e","type":"file","file":"CSHARP/Content/OOP Core.md","x":280,"y":-1200,"width":400,"height":400},
+		{"id":"3e32dfbdea679e43","type":"file","file":"CSHARP/Content/Collections.md","x":280,"y":-640,"width":400,"height":400}
+	],
+	"edges":[
+		{"id":"8c067b201436efa5","fromNode":"ac3c2c5a27380f82","fromSide":"bottom","toNode":"492a7b8218b5231f","toSide":"top"},
+		{"id":"e5fab42d8e0a7d79","fromNode":"9f794860079c0017","fromSide":"right","toNode":"37f7b31dd304c90e","toSide":"left"},
+		{"id":"9842e3ae7528cee3","fromNode":"492a7b8218b5231f","fromSide":"right","toNode":"9f794860079c0017","toSide":"left"},
+		{"id":"b842872543a8dd55","fromNode":"ac3c2c5a27380f82","fromSide":"left","toNode":"d4fa9f5ac787def3","toSide":"right"},
+		{"id":"4a80595e2308dd85","fromNode":"a8e7b32fa5ddc196","fromSide":"right","toNode":"ac3c2c5a27380f82","toSide":"top"},
+		{"id":"e55f856a52d49257","fromNode":"ac3c2c5a27380f82","fromSide":"right","toNode":"b191d817a9ce176e","toSide":"left"},
+		{"id":"808888d7b8ca3ed3","fromNode":"b191d817a9ce176e","fromSide":"right","toNode":"37f7b31dd304c90e","toSide":"left"},
+		{"id":"42a98ac1e2ec4da8","fromNode":"37f7b31dd304c90e","fromSide":"bottom","toNode":"3e32dfbdea679e43","toSide":"top"},
+		{"id":"960da92c331d93ba","fromNode":"9f794860079c0017","fromSide":"bottom","toNode":"3e32dfbdea679e43","toSide":"bottom"}
+	]
+}
