@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"e3c51bae9e57e087","type":"text","text":"Methods\n- Syntax\n- Methods with return\n- void method\n- Params keyword\n- Try catch\n- If else\n- Enhanced if\n- Nested if\n- Try parse\n- Switch\n- Break & Continue","x":60,"y":36,"width":250,"height":440,"color":"3"},
+		{"id":"8c1954d76abf491d","type":"text","text":"Arrays\n- Syntax\n- Multidimentional Arrays\n- 2D Array\n- 3D Array\n- Jagged Array\n- Array as Parameter","x":-345,"y":420,"width":336,"height":260,"color":"1"},
+		{"id":"3cbd17f752a78c5b","type":"text","text":"## Notes Order","x":-100,"y":-60,"width":218,"height":50,"color":"6"},
+		{"id":"68f72ba7eaaec213","type":"text","text":"OOP\n- Class\n- Access modifiers\n- Object\n- Constructor\n- Methods for new classes\n- Setters and Getters\n- Properties\n- Read/Write Only\n- Inheritance\n- Virtual and Override keyword","x":-345,"y":800,"width":336,"height":380,"color":"2"},
+		{"id":"00473b6df85bdc04","type":"text","text":"Basics\n- Value type / Reference type\n- Variables\n- Implicit / Explicit conversion\n- Parse\n- String Manipulation\n\n\n\n","x":-345,"y":146,"width":336,"height":220,"color":"5"},
+		{"id":"fb53988c8fcd83cc","type":"text","text":"Loops\n- For loop\n- Nested for loop\n- While\n- While do\n- for each (not loop)","x":60,"y":620,"width":250,"height":247,"color":"6"},
+		{"id":"7c1c99cb33ece2e2","type":"text","text":"Collections\n- Concept of generic and non generic collections\n- Which are each one\n- ArrayList\n-  #list \n- Hashtables\n- Dictionaries\n- Stacks\n- Queues","x":60,"y":1040,"width":250,"height":400,"color":"#97b5dd"},
+		{"id":"5144e85939ed46a3","type":"text","text":"Interfaces\n- Car and Chair Example\n- IEnumerable and IEnumerator\n- GetEnumerator() method\n- advanced concept of foreach","x":-345,"y":1360,"width":336,"height":240,"color":"#bb5454"}
+	],
+	"edges":[
+		{"id":"82f52ff94abe9a58","fromNode":"3cbd17f752a78c5b","fromSide":"bottom","toNode":"00473b6df85bdc04","toSide":"top"},
+		{"id":"17f785ccd7a635f1","fromNode":"00473b6df85bdc04","fromSide":"right","toNode":"e3c51bae9e57e087","toSide":"left"},
+		{"id":"3734ba3edaf2dd97","fromNode":"e3c51bae9e57e087","fromSide":"bottom","toNode":"8c1954d76abf491d","toSide":"right"},
+		{"id":"7f2a1bc864af747f","fromNode":"8c1954d76abf491d","fromSide":"bottom","toNode":"fb53988c8fcd83cc","toSide":"left"},
+		{"id":"65311e34fa89a8f4","fromNode":"fb53988c8fcd83cc","fromSide":"bottom","toNode":"68f72ba7eaaec213","toSide":"right"},
+		{"id":"c1a4bb91d0807116","fromNode":"68f72ba7eaaec213","fromSide":"bottom","toNode":"7c1c99cb33ece2e2","toSide":"left"},
+		{"id":"a20c06e04b380e2b","fromNode":"7c1c99cb33ece2e2","fromSide":"bottom","toNode":"5144e85939ed46a3","toSide":"right"}
+	]
+}

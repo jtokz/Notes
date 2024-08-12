@@ -2,7 +2,6 @@
 <h6 align = "center"> Hi, I'm Jordan and I'm programming and C# student<br>I want to share my notes with anyone who may find them useful</h6> 
 
 (I'm totally new in code so idk too much about create readme and other files)
-
 ### How to
 - Install obsidian https://obsidian.md/
 - Create a new vault
