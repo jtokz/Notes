@@ -28,6 +28,8 @@ Here i'm going to make a directory of bash and git commands
 | `git push -u origin *branch-name*`    | Sync local branch with remote                                                              |
 | `git reset --soft`                    | remove a commit without deleting changes in the local repository                           |
 | `git reset --hard`                    | remove a commit deleting changes in the local repository                                   |
+| `git pull`                            | fetch current files from master or sub branch                                              |
+| `git merge`                           | merges pulled files with your local branch                                                 |
 |                                       |                                                                                            |
 | `git checkout -b *new-branch*`        | Creates new local branch                                                                   |
 | `git branch -d *branch-name*`         | Deletes local branch                                                                       |
