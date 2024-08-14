@@ -17,4 +17,8 @@ You can customize a lot obsidian, if you want my styles here you have them
 - Settings > Community plugins > turn on > browse > Style Settings > enable > Import
 - Put the file there and save
 
-[![Captura-de-pantalla-2024-02-09-124202.png](https://i.postimg.cc/nhgtWrx2/Captura-de-pantalla-2024-02-09-124202.png)](https://postimg.cc/G4FN8cHT)
+It should look like this
+![[Pasted image 20240814151243.png]]
+
+This are the plugins that I use
+![[Pasted image 20240814150948.png]]
