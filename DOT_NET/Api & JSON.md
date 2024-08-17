@@ -79,3 +79,5 @@ Disclaimer: All of this you need to do inside a try & catch because internet can
 And finally we needs to dispone the connection
 ![[Pasted image 20240815142309.png]]
 This is basically how you can get information from internet, an api wherever other source
+
+In the following link you can find info about a project => [[Currency Converter using an API]]
