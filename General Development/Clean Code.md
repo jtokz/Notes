@@ -70,3 +70,24 @@ So let's try to reduce the redundant code and try to make it shortly
 This way code is reduced a lot en avoid some bugs that could be happens
 ![[Pasted image 20240921163955.png]]
 And then you just simply use it
+
+#### KISS principle (Keep it simple, stupid)
+The name say all
+
+This principle has some specific steps:
+1. Review the code if you're curious if you could or should change something
+2. Find the parts of the code where you think it's overly complex: 
+	For example: Loops are very performance heave so when you stumble across code and you identify multiple loops, be aware. Same applies for nested loops.
+	If you see multiple loops inside of a method, you want to dig deeper
+3. Refactoring the code to make it more straightforward 
+
+Example:
+Imagine we have this code
+
+How you can refactor it?
+![[Pasted image 20240923124911.png]]
+So we can notice that we are iterating through the same List and using the same if statement so we can just simply remove all of second foreach and simply add totalPrice to the first
+![[Pasted image 20240923161115.png]]
+This way you reduce the code and complexity giving a simpler solution
+![[Pasted image 20240923161213.png]]
+And having the same response
