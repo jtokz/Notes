@@ -70,7 +70,7 @@ Value type and reference type
  
 - Store actual data directly
 - Typically stored in the stack
-- Common examples of value types include primitive data types link int, float, long, double, char, bool, decima, these are also considered value types - struct, enum
+- Common examples of value types include primitive data types like int, float, long, double, char, bool, decima, these are also considered value types - struct, enum
 - Nullable version available (int?, double?, etc.)
     
     Then there are nullable value types and every value type has a corresponding nullable version that can

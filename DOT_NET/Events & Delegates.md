@@ -33,8 +33,6 @@ Create a delegate wich would be boolean type and contain as parameter a (Person 
 ![[Pasted image 20240414220457.png]]
 
 Since we want to apply different filters, let's actually create a method called DisplayPeople
-
-TODO / PUT HERE 2ND EXERCISE OF DELEGATES DEMO
 #### Anonymous methods
 Anonymous methods in C# can be defined using the delegate keyword and can be assigned to a variable of the delegate type
 This means that we don't have to define a method of our own each time we want to call a method that needs
