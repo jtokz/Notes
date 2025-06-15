@@ -110,3 +110,45 @@ Now, this should not work if we create a repository for that because it's again 
 ![[Pasted image 20250220221015.png]]
 ![[Pasted image 20250220221004.png]]
 This way User class can be stored in a Repository, because we implement IEntity in our User class and its property Id
+
+##### Combining generic classes with generic interfaces
+In rare situations like you enter a new company that follows strictly design pattern and you need to make use of a combination of generic classes and generic interfaces you should be familiar with this and what's going on under the hood and you should be able to see the pattern that they are using in the code
+![[Pasted image 20250223132831.png]]
+The approach of this things is that you don't need re-write code, this code works for every class you want to implement to
+  
+##### Generic reflections
+![[Pasted image 20250224200815.png]]
+C# is type safe, it has types and classes so most of the time when you get an error you're still in visual studio or when app starts, but with generics where all the types are generic, chances are that you might run if your logic gets more complicated into scenarios where you want to learn or find out more, or write specific scenarios for when a generic type is of a specific value, for example, hey if we have a generic type of type string here, we want to do that and if the generic type is of type integer, we want to do it that way
+And you can do that by using reflection All information about what's under the hood in c# you can find that out with the type of keyword if you store it inside of Type you can inspect it basically, one common thing that you do with that during usual human development
+
+##### Generics by default in Csharp
+###### Action<>
+![[Pasted image 20250303203210.png]]
+You can use action like i did above, which encapsules a method without parameters and not return, that is, void
+
+The generic part of this is when you make use of <"T">
+![[Pasted image 20250303203652.png]]
+Encapsulates a method with an unic parameter and don't return a value
+
+But this Action delegate can store since 16 parameters and cannot return a value (a void)
+![[Pasted image 20250309103411.png]]
+something like this
+![[Pasted image 20250309104517.png]]
+###### Func<>
+The principal difference between Action and Func is that Func generic delegate returns a value of type TResult, so you can specify what do you want to get from it
+![[Pasted image 20250309105335.png]]
+Same way you can pass it since 16 parameters and an out TResult
+![[Pasted image 20250309110011.png]]
+other example
+![[Pasted image 20250309110410.png]]
+we can of course make it on this way
+![[Pasted image 20250309110916.png]]
+###### Predicate<>
+Predicate returns a bool that basically match any specific conditions, for example if you want to check if a person has a specific age or if a product matches a specific category or whatsoever
+![[Pasted image 20250309111858.png]]
+other example making use of a method that needs a Predicate
+![[Pasted image 20250309112346.png]]
+
+
+
+So in comparison, we now have an Action that doesn't return anything, it just executes code, have a Function where we can specify tons of parameters and the return value that we will get back once the code got executed, just like a method and we have a Method that returns true or false
