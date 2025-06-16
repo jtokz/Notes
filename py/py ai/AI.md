@@ -129,6 +129,7 @@ We're able to make an informed decision because we know a little something more 
 ![[Pasted image 20250604105454.png]]
 	And we end up doing better, in terms of the number of states we needed to explore, than BFS needed to, BFS explored all right section and all of that other bottom section, but we were able to eliminate that by taking advantage of this heuristic, this knowledge about how close we are to the goal or some estimate of that idea, so this seems so much better, so wouldn't wee always prefer an algorithm like this over an algorithm like breadth-first search? maybe.
 	One thing to take into consideration is that we need to come up with a good heuristic. How good the heuristic is, is going to affect how good this algorithm is, and coming up with a good heuristic can oftentimes be challenging.
-	But the other thing to consider is to ask the question, just as we did with the prior two algorithms, is this algorithm optimal? to solve this problem. Will it always find the shortest path from the initial state to the goal? And to answer that question, let's take a look at this example for a moment
-	![[Pasted image 20250604110553.png]]
+	But the other thing to consider is to ask the question, just as we did with the prior two algorithms, is this algorithm optimal? to solve this problem. Will it always find the shortest path from the initial state to the goal? And to answer that question
 	
+
+let's take a look at this example for a moment	![[Pasted image 20250604110553.png]]
