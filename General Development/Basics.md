@@ -34,3 +34,50 @@ It's just the HTTP protocol with TLS
 - HTTPS defines the estructure and format of messages between client and server, specifying what's the client request and the server's response
 - TCP provides the communication channel between client and server, ensuring reliable and orderly transmission of data
 - TLS provides  security for data transmission through TCP, ensuring that communication between client and server is encrypted and protected against interception and manipulation by third parties 
+
+
+### ✅ ¿Qué es **Node.js**?
+
+Es un **entorno de ejecución de JavaScript en el servidor**. Es decir, permite ejecutar código JavaScript fuera del navegador (por ejemplo, para crear servidores, herramientas, aplicaciones, etc.).
+
+- Node.js incluye un motor de JavaScript (V8 de Chrome) y APIs para interactuar con archivos, red, etc.
+- Se instala como un programa en tu sistema operativo.
+- 
+### ✅ ¿Qué es **npm**?
+
+Es el **administrador de paquetes de Node.js** (Node Package Manager).
+- Permite instalar, actualizar y administrar bibliotecas y herramientas (por ejemplo: `express`, `react`, `vite`, etc.).
+- Se instala **automáticamente** junto con Node.js.
+- Puedes usarlo con el comando:
+	`npm install <paquete>`
+
+
+### ✅ ¿Qué es **nvm**?
+
+Es el **Node Version Manager**, un administrador de versiones de Node.js.
+
+- Permite instalar y alternar fácilmente entre diferentes versiones de Node.
+    
+- Muy útil cuando trabajas en varios proyectos que requieren versiones distintas de Node.
+    
+
+Después de instalar NVM, abre una consola **CMD o PowerShell** y escribe:
+`nvm install latest`
+Eso instalará la última versión estable de Node.js.
+Para usar esa versión:
+`nvm use latest`
+ O puedes instalar una versión específica, por ejemplo:
+ `nvm install 18.17.1 
+ `nvm use 18.17.1`
+
+Verificar
+`node -v   # Muestra la versión de Node.js 
+``npm -v    # Muestra la versión de npm 
+``nvm list  # Muestra las versiones instaladas con NVM`
+## 📌 Resumen rápido:
+
+|Herramienta|¿Qué es?|¿Cómo se instala?|
+|---|---|---|
+|`Node.js`|Entorno para ejecutar JS en PC|Con `nvm install <versión>`|
+|`npm`|Gestor de paquetes de Node|Se instala automáticamente con Node|
+|`nvm`|Gestor de versiones de Node|Con el instalador de GitHub|

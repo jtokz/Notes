@@ -1,5 +1,5 @@
-<h1 align = "center"> Obsidian C# (and other programming topics) Notes</h1>
-<h6 align = "center"> Hi, I'm Jordan and I'm programming and C# student<br>I want to share my notes with anyone who may find them useful</h6> 
+<h1 align = "center"> Obsidian C#/Phyton (and other programming topics) Notes</h1>
+<h6 align = "center"> Hi, I'm Jordan and I'm programming and C# && Python student<br>I want to share my notes with anyone who may find them useful</h6> 
 
 (I'm totally new in code so idk too much about create readme and other files)
 ### How to
@@ -22,3 +22,5 @@ It should look like this
 
 This are the plugins that I use
 ![[Pasted image 20240814150948.png]]
+
+pd. Some of my notes are in Spanish but the vast majory are in English

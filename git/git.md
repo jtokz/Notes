@@ -41,3 +41,6 @@ Here i'm going to make a directory of bash and git commands
 |                                       |                                                                                                                             |
 
 Credits https://gist.github.com/cferdinandi/ef665330286fd5d7127d
+
+##### Esto listará todas las carpetas `.git` desde esa ruta, es decir, te dice dónde hay repositorios Git.
+find /c/Users/TuUsuario -type d -name ".git"
