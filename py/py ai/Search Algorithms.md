@@ -1,6 +1,6 @@
 TODO: Bring here all info about this topic
 
-erminology
+Terminology
 
 - agent: entity that perceives its environment and acts upon that environment, so for example in driving directions your agent might be some representation of a car that is trying to figure out what actions to take in order to arrive at a destination 
 
