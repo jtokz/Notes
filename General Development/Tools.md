@@ -39,3 +39,29 @@ Caniuse - para averiguar si se pueden usar distintas herramientas como las de cs
 Vscodethemes - temas para el vsc
 
 Netlify - Subir proyectos para que otras personas lo vean
+
+
+**DevTools**
+
+Como encontrar herramientas, stacks, workflows y demás, buscar cosas como
+
+- terminal tools
+- awesome terminal
+- dotfiles  
+
+Reddit:
+r/unixporn (solo setups visuales pero descubres herramientas)
+r/commandline
+r/neovim
+r/linux
+r/programming
+
+Github:
+username dotfiles
+awesome dotfiles
+
+Aquí ver:
+- qué terminal usan
+- qué plugins
+- aliases reales
+- workflows
