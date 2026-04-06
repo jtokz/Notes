@@ -1,3 +1,6 @@
+---
+tags: [area/tools, type/reference]
+---
 
 Notion - App para escribir apuntes y organización
 Wordpress - Creación de páginas web

@@ -1,5 +1,8 @@
-#csharp #oop #basics #dev 
-[[OOP Core]] [[Arrays]] [[Methods and control structures]] [[Loops]] [[String Manipulation]] [[Variables]] 
+---
+tags: [lang/csharp, area/oop, area/basics, type/concept]
+---
+
+**Ver también:** [[OOP Core]] · [[Arrays]] · [[Methods and control structures]] · [[Loops]] · [[String Manipulation]] · [[Variables]]
 
 Most relevant:
 - C sharp is a single inheritance language, not multi inheritance language
@@ -163,9 +166,41 @@ void CoolMethod() {
 
 //cool code
 
-![[Untitled 4.png]]
+```csharp
+namespace XML_Comments
+{
+    /// <summary>
+    /// Esta clase da un mensaje
+    /// </summary>
+    public class Mensaje
+    {
+        /// <summary>
+        /// Aqui se almacena la edad
+        /// </summary>
+        public int edad { get; set; }
 
-![[Untitled 5.png]]
+        /// <summary>
+        /// Este método saluda
+        /// </summary>
+        /// <param name="user">Almacena el nombre del usuario</param>
+        /// <returns>Retorna un saludo con el nombre</returns>
+        public string Saludos(string user)
+        {
+            return $"Saludos {user}";
+        }
+    }
+}
+```
+
+```csharp
+using XML_Comments;
+
+Mensaje m = new();
+
+m.edad = 28;
+
+m.Saludos("Jordan");
+```
 
 Este tipo de comentarios sirve para que cuando se reutilice alguna parte del código ya escrito vaya acompañado de un pequeño mensaje de qué hace esa propiedad, clase, método, etc
 
@@ -184,7 +219,21 @@ Console.ReadLine() - Takes a string or integer input and returns it as the actua
 
 Console.ReadKey() - Takes a single input of type string and it returns the Key info - very useful when you need to keep the program running without shutting down
 
-![[Untitled 6.png]]
+```csharp
+namespace Ejercicio1
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("HELLO WELCOME"); // prints the text and jumps to a new line
+            Console.Write("HELLO"); // prints the text in the same line
+            Console.Write("WELCOME"); // again a .Write for as expected Output like "HELLOWELCOME"
+            Console.ReadKey(); // for keep running the program until we type a key
+        }
+    }
+}
+```
 
 Output
 
@@ -192,11 +241,22 @@ HELLO WELCOME // printed as a result of Console.WriteLine()
 
 HELLOWELCOME // printed as a result of two lines of Console.Write()
 
-![[Untitled 7.png]]
+```
+HELLO WELCOME
+HELLOWELCOME
+```
 
 EXAMPLE:
 
-![[Untitled 8.png]]
+```csharp
+Console.Write("Enter a string: ");
+string readInput = Console.ReadLine();
+Console.WriteLine("You have entered: " + readInput);
+
+Console.Write("Enter a string: ");
+int asciiValue = Console.Read();
+Console.ReadKey();
+```
 
 Here the console asks to user to enter a string
 
@@ -213,7 +273,12 @@ Implicit conversions
 
 it's when you don’t need add a specific factor of conversion because there aren’t conflicts with the variables, a case of this is when you want to pass the value of an int to a long for example, since they bot use integer numbers
 
-![[Untitled 9.png]]
+```csharp
+// Implicit Conversion
+int num = 12345;
+long bigNum = num;
+Console.WriteLine(bigNum);
+```
 
 
 Explicit conversion
@@ -222,18 +287,57 @@ Explicit conversions require a [cast expression](https://learn.microsoft.com/en
 
 Ex. Convert a double to int
 
-![[Untitled 10.png]]
+```csharp
+// Explicit Conversion
+double myDouble = 13.37;
+int myInt;
+
+// cast double in int;
+myInt = (int)myDouble;
+// with this sintaxis i can put my double into a int variable
+// this is knowed as casting, that's explicit conversion
+Console.WriteLine(myInt);
+Console.Read();
+```
 
 You can also convert a number like an int or double, float etc in a string so you have to use a special sintaxis
 
-![[Untitled 11.png]]
+```csharp
+// typeConversion
+string myString = myDouble.ToString(); // 13.37 -> "13.37"
+```
 ### Parse
 
 You can extract the numbers into a string to convert them onto an int, double, etc. and therefore be able to operate with them through syntax Parse
 
-![[Untitled 12.png]]
+```csharp
+static void Main(string[] args)
+{
+    string myString = "15";
+    string mySecondString = "13";
+    string result = myString + mySecondString;
 
-![[Untitled 13.png]]
+    int num1 = Int32.Parse(myString);
+    int num2 = Int32.Parse(mySecondString);
+    int resultInt = num1 + num2;
+    Console.WriteLine(resultInt);
+    Console.Read();
+}
+```
+
+```csharp
+// Tarea 1 - Parsing
+
+string stringForFloat = "0.85"; // datatype should be float
+string stringForInt = "12345"; // datatype should be int
+
+float stringInFloat = float.Parse(stringForFloat);
+int stringOnInt = Int32.Parse(stringForInt);
+
+Console.WriteLine(stringInFloat);
+Console.WriteLine(stringOnInt);
+Console.Read();
+```
 
 In this we convert a string into a float too
 
@@ -261,20 +365,121 @@ On the other hand you can use StaticMethod() directly without creating an object
 
 Math class is a class with a lot of mathematic methods that you can implement  in your projects
 
-![[Pasted image 20240405223715.png]]
+```csharp
+// Some methods of Math Class
+
+// Round up / Ceiling
+Console.WriteLine("Ceiling: " + Math.Ceiling(25.33));
+// Round Down / Floor
+Console.WriteLine($"Floor of number {num}: {Math.Floor(5.13)}");
+
+Console.WriteLine($"Lower of num {num1} and num {num2} is {Math.Min(num1, num2)}");
+Console.WriteLine($"Higher of num {num1} and num {num2} is {Math.Max(num1, num2)}");
+
+Console.WriteLine($"The value to the power of 3 is {Math.Pow(3, 8)}");
+Console.WriteLine($"Always positive: {Math.Abs(-101)}");
+```
 
 #### Random Class
 
-![[Pasted image 20240406151322.png]]
-![[Pasted image 20240406151338.png]]
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        Random dice = new Random();
+
+        for (int i = 0; i < 10; i++)
+        {
+            int numEyes = dice.Next(1, 7); // maxValue is not included
+            Console.WriteLine(numEyes);
+        }
+    }
+}
+```
+
+```csharp
+// Fortune Exercise
+Random answer = new Random();
+Console.WriteLine("Write a question to the crystal sphere");
+int response = answer.Next(1, 5);
+switch (response)
+{
+    case 1:
+        Console.WriteLine("Yes");
+        break;
+    case 2:
+        Console.WriteLine("Maybe");
+        break;
+    case 3:
+        Console.WriteLine("No");
+        break;
+}
+```
 
 #### DateTime Class
-![[Pasted image 20240409190904.png]]
-![[Pasted image 20240409190922.png]]
-![[Pasted image 20240409191247.png]]
+```csharp
+// CultureInfo makes that shows the time in specific region format like AM/PM in US
+CultureInfo value = new CultureInfo("en-US");
+
+DateTime dateTime = new DateTime(1997, 11, 10, 18, 30, 0);
+Console.WriteLine("My Birthday is {0}", dateTime);
+
+// Write Today on screen
+DateTime dt = DateTime.Now;
+Console.WriteLine(dt);
+
+// Write tomorrow
+DateTime tomorrow = GetTomorrow();
+Console.WriteLine($"Tomorrow will be {tomorrow}");
+
+// The first day of a specific year
+Console.WriteLine(GetFirstDayOfYear(1973));
+// The day of the week
+Console.WriteLine(GetDayFDOfYear(1973));
+```
+
+```csharp
+// Specific info
+DateTime dt = DateTime.Now;
+// Shows today's hours and minutes, and seconds
+Console.WriteLine(dt.ToString("hh:mm:ss"));
+string input = Console.ReadLine();
+
+// Days passed since a date
+DateTime jordancaro = new DateTime(1997, 11, 10);
+TimeSpan jordancaroborn = DateTime.Now.Subtract(jordancaro);
+Console.WriteLine($"Jordan has lived {jordancaroborn.Days} days since Jordan's birth");
+```
+
+```csharp
+static DateTime GetTomorrow()
+{
+    return DateTime.Today.AddDays(1);
+}
+
+static DateTime GetFirstDayOfYear(int year)
+{
+    return new DateTime(year, 1, 1);
+}
+
+static DayOfWeek GetDayFDOfYear(int year)
+{
+    DateTime firstDay = GetFirstDayOfYear(year);
+    return firstDay.DayOfWeek;
+}
+```
 
 ##### Nullable variables
-![[Pasted image 20240409232220.png]]
+```csharp
+int? numB = new int?();
+double? numC = new double?();
+bool? boolD = new bool?();
+
+Console.WriteLine("Our nullable numbers are: {0},{1},{2},{3}", numB, numC, num1, num2);
+// Our nullable boolean value is:
+Console.WriteLine(boolD);
+```
 
 Nullable variables will make that the program don't crashes  when you implement a variable without a value, so if you declare as nullable you can use it but won't show anything
 
@@ -282,8 +487,30 @@ What is the approach for this? in that case you will use Nullable?
 For example, when you have formularies like First name, Second name, Family name Etc. and a camp can be stay empty so that won't make the program crashes
 
 Ex.
-![[Pasted image 20240409233511.png]]
-![[Pasted image 20240409235257.png]]
+```csharp
+bool? isMale = null;
+if (isMale == true)
+{
+    Console.WriteLine("User is male");
+}
+else if (isMale == false)
+{
+    Console.WriteLine("User is female");
+}
+else
+{
+    Console.WriteLine("No gender chosen");
+}
+```
+
+```csharp
+Console.WriteLine("Value of num is: {0}", numb);
+// NULL COALESCING OPERATOR (??)
+// If num has a value take it, if it's null return 13.37
+numb = numb ?? 13.37;
+Console.WriteLine("Value of num is: {0}", numb);
+Console.WriteLine("Value of num1 is: {0}", num1);
+```
 
 ##### Garbage Collection
 
@@ -314,7 +541,16 @@ creates other one and another one
 There are reference to our memory pool, so we maybe delete the reference by setting a variable null or by setting the object null, and then the reference suddenly gone, now there is no reference from our program to this little memory allocation here anymore and our garbage collector notices it and says, okay, there's no reference, so this little piece of memory is never used, so let's just clean it up or  let's re allocate it or let's just freed up for other allocation
 ![[Pasted image 20240410120517.png]]
 
-![[Pasted image 20240410120821.png]]
+```csharp
+// Example of when garbage collection would kick in
+public void myFunction {
+    Human denis = new Human(); // allocates Memory
+    denis.teach();
+    int age = denis.age;
+    denis.getOlder();
+}
+// The function ends → "denis" goes out of scope → no references left → GC cleans it up
+```
 We use denis Object, call it's methods, set some properties and so forth but at one point, this Denis object in the memory is not required anymore because the function call is over.
 So the function ends and Denis goes out of scope and there are no references to Denis anymore because myFunction is a function and we have this object which is within a function, so the scope of it is within the function, so once the function call is over, there's no direct referennce to it anymore because we can't reference  to an object which is within a function from outside of this function
 ![[Pasted image 20240410121323.png]]
@@ -338,14 +574,49 @@ Main method has as parameter the Array string[] args where you can put here some
 2. Debug
 3. Open debug launch profiles UI
 ![[Pasted image 20240411132414.png]]
-![[Pasted image 20240411132843.png]]
+```csharp
+namespace SimpleTests
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, " + args[0]);
+        }
+    }
+}
+```
 Here we use this args array and indicates which position you want to print, as well we are using string concatenation in order to write some things in addition to args string word
 
 Adding some other strings to args
-![[Pasted image 20240411133609.png]]
+```csharp
+static void Main(string[] args)
+{
+    Console.WriteLine("Hello, " + args[0]);
+
+    foreach (string arg in args)
+    {
+        Console.WriteLine(arg);
+    }
+}
+```
 
 In order to don't get an error when you use the parameter args and it would be null, you can make 
-![[Pasted image 20240411141309.png]]
+```csharp
+static void Main(string[] args)
+{
+    // arguments cannot be null. It's safe to check the length property without null checking
+    if (args.Length == 0)
+    {
+        Console.WriteLine("This is a smart app that uses args :) Please provide arguments next time");
+        // Pause the application so it doesn't quit after printing our error message
+        Console.ReadKey();
+        // Quit the application entirely since we can't proceed further since the arguments are empty
+        return;
+    }
+    Console.WriteLine("Hello, " + args[0]);
+}
+```
 
 You can pass arguments through CMD so if you just open the .exe without arguments it will show the message but you can try to open it with cmd and pass there arguments like this
 ![[Pasted image 20240411165225.png]]
@@ -359,7 +630,22 @@ Rule #1: Never trust the user
 So we need to cover the possible mistakes that users may make
 
 For example. We are going to create an application which the user has pass arguments, so if they need help, they will have to ask for help using 'help'
-![[Pasted image 20240414181141.png]]
+```csharp
+// check if the first command we got is help
+if (args[0] == "help")
+{
+    // display menu
+    Console.WriteLine("*** Instructions ***");
+    Console.WriteLine("* use one of the following commands followed by 2 numbers");
+    Console.WriteLine("* 'add' : to add 2 numbers");
+    Console.WriteLine("* 'sub' : to subtract 2 numbers");
+    Console.WriteLine("* example: 'add 5 2'");
+    Console.WriteLine("********************");
+    // pause
+    Console.ReadKey();
+    return;
+}
+```
 How to call help command?
 As this is a cmd app, you must to call it in your Terminal so you need to type the .exe and then the args that you want to pass to it
 ![[Pasted image 20240414181327.png]]
@@ -367,8 +653,51 @@ So at continue to the path you have to put the args following instructions of he
 
 Code for instructions:
 
-![[Pasted image 20240414181956.png]]
-![[Pasted image 20240414182023.png]]
-![[Pasted image 20240414182044.png]]
+```csharp
+// check the length of args
+if (args.Length != 3)
+{
+    Console.WriteLine("Invalid arguments, please use the help command for instructions");
+    // pause
+    Console.ReadKey();
+    // quit the app
+    return;
+}
+```
+
+```csharp
+// In C# 6 and earlier, you must declare a variable in a separate statement before you pass it
+// Note: if the parsing operation fails, 'out' will have its default value
+bool isNumParsed = float.TryParse(args[1], out float num1);
+bool isNum2Parsed = float.TryParse(args[2], out float num2);
+
+if (!isNumParsed)
+{
+    Console.WriteLine("Invalid arguments, please use the help command for instructions");
+    Console.ReadKey();
+    return;
+}
+```
+
+```csharp
+// a variable to store the results
+float result;
+switch (args[0])
+{
+    // case 1 'add' — add the 2 numbers and print the value
+    case "add":
+        result = num1 + num2;
+        Console.WriteLine($"The sum of {num1} and {num2} is {result}");
+        break;
+    // case 2 'sub' — subtract the two numbers and print the value
+    case "sub":
+        result = num1 - num2;
+        Console.WriteLine($"The sub of {num1} and {num2} is {result}");
+        break;
+    default:
+        Console.WriteLine("Invalid arguments, please use the help command for instructions");
+        break;
+}
+```
 And then just simply follow the instructions
 ![[Pasted image 20240414181629.png]]

@@ -1,7 +1,6 @@
 ---
-
 kanban-plugin: board
-
+tags: [lang/python, area/ai, type/course, course/100days, course/cs50ai]
 ---
 
 ## Fase 1 — Refrescar Python <br>`2–3 semanas`

@@ -1,10 +1,73 @@
+---
+tags: [lang/csharp, area/oop, type/reference]
+---
+
 ###### IEnumerable && IEnumerator
 
 This is a conversation that i had with ChatGPT where it explaining me why IEnumerable & IEnumerator is used if is too less complicated to use just one class 'Dog', implement the methods there and just create a list in Main method, after all you already can use foreach by this way
 
-![[Pasted image 20240307190101.png]]
-![[Pasted image 20240307190114.png]]
-![[Pasted image 20240307190134.png]]
+```csharp
+static void Main(string[] args)
+{
+    DogShelter shelter = new DogShelter();
+    foreach (Dog dog in shelter)
+    {
+        if (!dog.IsNaughtyDog)
+        {
+            dog.GiveTreat(2);
+        }
+        else
+        {
+            dog.GiveTreat(1);
+        }
+    }
+}
+```
+```csharp
+class Dog
+{
+    public string Name { get; set; }
+    public bool IsNaughtyDog { get; set; }
+
+    public Dog(string name, bool isNaughtyDog)
+    {
+        this.Name = name;
+        this.IsNaughtyDog = isNaughtyDog;
+    }
+
+    public void GiveTreat(int numOfTreats)
+    {
+        Console.WriteLine($"{Name} said woof (numberOfTreats: {numOfTreats})");
+    }
+}
+```
+```csharp
+class DogShelter : IEnumerable<Dog>
+{
+    public List<Dog> dogs;
+
+    public DogShelter()
+    {
+        dogs = new List<Dog>()
+        {
+            new Dog("Thomas", false),
+            new Dog("Maximilian", true),
+            new Dog("Karla", true),
+            new Dog("Tasha", false),
+        };
+    }
+
+    IEnumerator<Dog> IEnumerable<Dog>.GetEnumerator()
+    {
+        return dogs.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+}
+```
 
 Entendido. Has proporcionado un fragmento de código en C# que crea una clase `Dog` y una clase `DogShelter`, y luego en el método `Main` del programa, se itera sobre una instancia de `DogShelter`, dando golosinas a los perros según si son o no perros traviesos.
 Ahora, adelante con tu conclusión.
@@ -42,7 +105,43 @@ ChatGPT
 ¡Por supuesto! Adelante con el código y luego con tu conclusión. Estoy aquí para ayudarte.
 
 You
-![[Pasted image 20240307191031.png]]
+```csharp
+public static void Main(string[] args)
+{
+    Dog dog1 = new Dog("Thomas", 12);
+    Dog dog2 = new Dog("Maxi", 6);
+    Dog dog3 = new Dog("Sasha", 6);
+    Dog dog4 = new Dog("Karla", 9);
+
+    List<Dog> dogs = new List<Dog>();
+    dogs.Add(dog1);
+    dogs.Add(dog2);
+    dogs.Add(dog3);
+    dogs.Add(dog4);
+
+    foreach (Dog dog in dogs)
+    {
+        Console.WriteLine(dog.ToString());
+    }
+}
+
+class Dog
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Dog(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public override string ToString()
+    {
+        return String.Format($"Name: {Name}, Age: {Age}");
+    }
+}
+```
 
 ChatGPT
 Entendido. Adelante con tu conclusión. Estoy listo para escucharla.

@@ -1,7 +1,13 @@
+---
+tags: [area/basics, type/reference]
+---
+
 Here i'm going to write some standards and tools that programmers have to know and use for its utility
 
 @ before a string
-![[Pasted image 20240814145758.png]]
+```csharp
+@"{ name : "Sif" , age : 12 }";
+```
 this is used to take literally a string so if you put @ before things like \n won´t work, is common used with paths, ascii art and other things that you need take the string verbatim
 
 ![[Pasted image 20240814150005.png]]

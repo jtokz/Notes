@@ -1,4 +1,6 @@
-#Lambda 
+---
+tags: [lang/csharp, area/basics, type/concept]
+---
 
 ![[Pasted image 20240416133034.png]]
 
@@ -32,11 +34,26 @@ When can i use Lambda Expressions?
 Let's see in code inside of our previous example
 // Make a new Display people example which filter if people's age is > 20 & contains in his name a keyword, in this case `A` 
 
-![[Pasted image 20240416135046.png]]
+```csharp
+// |======= Add few filters using Lambda Expressions =======|
+string searchKeyword = "A";
+// Display people +20 and with the search keyword (in this case A)
+DisplayPeople("Age > 20 with search keyword:" + searchKeyword, people, p =>
+{
+    if (p.Name.Contains(searchKeyword) && p.Age > 20)
+        return true;
+    else return false;
+} );
+```
 With this you can use a Lambda expression as parameter making the role of a delegate method, like an anonymous method
 
 Let's see how a normal filter method is look like, in order to not get confused
-![[Pasted image 20240416141600.png]]
+```csharp
+static bool IsMajor(Person p)
+{
+    return p.Age > 18;
+}
+```
 Our Lambda Expression makes this same role, so the `p` in our Lambda expression is the parameter of the filter method of 
 Type Person (p) <-- being `p` a Person type variable which get access to the properties of Person class, so, as you can see it don't have a name just put it followed by => lambda expression sign
 
@@ -72,8 +89,21 @@ Ejemplos:
 
 Es importante tener en cuenta que las expresiones lambda en C# son funciones anónimas y pueden ser asignadas a variables, pasadas como argumentos de métodos o usadas en cualquier lugar donde se espera una referencia a una función.
 
-![[Pasted image 20240416195432.png]]
-![[Pasted image 20240416195335.png]]
+```csharp
+// One more thing about lambda
+
+// you can store a lambda as a variable
+Func<int, int> PlusOne = (a) => ++a;
+// this function gets an int argument and returns another int
+// You can have a return or not. And you can have no argument or have multiple.
+
+// it is the way you can call this function
+    int res = PlusOne(3);
+Console.WriteLine(res); // expected 4
+```
+```csharp
+Func<string> firstLambda = () => "Hola mundo";
+```
 
 
 Code exercise
@@ -89,4 +119,29 @@ Code exercise
     
 3. Create a static method OperationGet that will get as input a string, test if this string is a Key in the dictionary and if positive return function otherwise returns null.
 
-![[Pasted image 20240416210542.png]]
+```csharp
+static Func<float, float, float> Plus = (a, b) => a + b;
+static Func<float, float, float> Minus = (a, b) => a - b;
+static Func<float, float, float> Multiply = (a, b) => a * b;
+static Func<float, float, float> Divide = (a, b) => a / b;
+
+static Dictionary<string, Func<float, float, float>> Operators = new Dictionary<string, Func<float, float, float>>()
+{
+    {"+", Plus},
+    {"-", Minus},
+    {"*", Multiply},
+    {"/", Divide},
+};
+
+static Func<float, float, float> result;
+static Func<float, float, float> OperationGet(string s)
+{
+    if (Operators.TryGetValue(s, out result)) return result; else return null;
+}
+
+public static void Main(string[] args)
+{
+    OperationGet("+");
+    Console.WriteLine(result(1, 22));
+}
+```

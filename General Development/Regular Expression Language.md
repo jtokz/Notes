@@ -1,4 +1,7 @@
-#dev #basics #csharp
+---
+tags: [lang/csharp, area/basics, type/reference]
+---
+
 Snippets
 
 CHARACTER ESCAPES
@@ -54,7 +57,28 @@ In this case i want to match with three kind of German phone numbers
 ![[Pasted image 20240408010819.png]]
 
 Using in C#
-![[Pasted image 20240408170411.png]]
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello, World!");
+
+        Regex mailRegex = new Regex(@"\w+@\w+\.?\w{2,3}?\.?\w{2,3}");
+
+        string mail1 = "jordan@gmail.com";
+
+        if(mailRegex.IsMatch(mail1))
+        {
+            Console.WriteLine("Mail matched!");
+        }
+        else
+        {
+            Console.WriteLine("Not valid, please enter a valid mail");
+        }
+    }
+}
+```
 
 ![[Pasted image 20240408234025.png]]
 

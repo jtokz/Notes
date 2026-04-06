@@ -1,3 +1,7 @@
+---
+tags: [lang/sql, area/data, type/concept]
+---
+
 Microsoft SQL Server is a Microsoft software to create and manipulate data bases and other things of this topic
 
 ##### Creating a server and setting up all other things to make data bases
@@ -25,12 +29,35 @@ Set (As always) Identity Specifications > Is Identity = True
 And then you need to bind the columns that you want to associate at this table, so
 ![[Pasted image 20240516155506.png]]
 Create a new Foreing Keys to bind with those columns, set names and then in code you need to specify the nex info
-![[Pasted image 20240516155652.png]]
+```sql
+CONSTRAINT [Column_Name_ForeignKey] FOREIGN KEY ([Column]) REFERENCES [ToTable]([ToTableColumn])
+```
 first as i said Set a name, then the column in where that info will be stored and last, the table in which information will be subtracted, and the column of that table
 
 Create a Query
-![[Pasted image 20240516191155.png]]
-![[Pasted image 20240516191233.png]]![[Pasted image 20240516212412.png]]
+```sql
+-- How to call information:
+-- * means all, so select * from Animal = give me everything about Animal Table
+-- select * from Animal
+```
+```sql
+-- 'select a.Name' — take the 'Name' column from Animal table through variable 'a'
+-- Inner Join specifies the internal connection between Animal and ZooAnimal tables
+-- 'on a.Id = za.AnimalId' — condition: show Name where a.Id matches za.AnimalId
+-- Because when ZooAnimal was created, each animal's Id was stored in AnimalId column
+-- 'where za.ZooId = 1' — only show animals that belong to Zoo with Id = 1
+select a.Name from Animal a inner join ZooAnimal za on a.Id = za.AnimalId where za.ZooId = 1
+```
+```sql
+-- little challenge:
+-- Make a query which shows the Zoos where there is a specific animal --> Mamut
+select z.Location from Zoo z inner join ZooAnimal za on z.Id = za.ZooId where za.AnimalId = 2
+
+-- select z.Location from Zoo z → select Location column, assign variable 'z' to Zoo table
+-- inner join ZooAnimal za → connect Zoo table with the relational table, variable 'za'
+-- on z.Id = za.ZooId → with this it will show all Locations
+-- where za.AnimalId = 2 → only show those that meet that AnimalId
+```
 
 #### HOW TO CONNECT WITH THE APPLICATION
 First of all you need to open the window Data Sources
@@ -38,9 +65,37 @@ First of all you need to open the window Data Sources
 
 Show information in User Controls
 
-![[Pasted image 20240516233723.png]]
-![[Pasted image 20240516233804.png]]
-![[Pasted image 20240516233849.png]]
+```csharp
+public partial class MainWindow : Window
+{
+    // Create an object type SqlConnection to link our application with the DataBase
+    SqlConnection sqlConnection;
+```
+```csharp
+public MainWindow()
+{
+    InitializeComponent();
+    // create a variable type string to store the ConnectionString path with the db
+    string connectionString = ConfigurationManager.ConnectionStrings["WPF_ZooManager.Properties.Settings.JtokzDBConnectionString"].ConnectionString;
+    // here we set our object SqlConnection with the ConnectionString
+    sqlConnection = new SqlConnection(connectionString);
+}
+```
+```csharp
+// ShowZoos() will be used to show the zoos in the ListBox
+private void ShowZoos()
+{
+    string query = "select * from Zoo";
+    DataTable dataZoos = new DataTable();
+    sqlConnection.Open();
+    SqlDataAdapter sda = new SqlDataAdapter(query, sqlConnection);
+    sda.Fill(dataZoos);
+    listZoos.DisplayMemberPath = "Location";
+    listZoos.SelectedValuePath = "Id";
+    listZoos.ItemsSource = dataZoos.DefaultView;
+    sqlConnection.Close();
+}
+```
 
 ##### How to use SQL parameters
 
@@ -120,13 +175,35 @@ SqlCommand en principio es usado para pedir consultas a través de querys con pa
 
 ![[Pasted image 20240619192833.png]]
 Es importante que, si necesitas seleccionar todos los datos de una tabla, ya sea para mostrar uno y tener seleccionado otro, usar el asterisco, ya que si por ejemplo, únicamente pedimos en la query a.Name, por más de que tengamos el Path en Id, ÚNICAMENTE tomará el dato que le pedimos, omitiendo todos los demás
-![[Pasted image 20240521172917.png]]
-![[Pasted image 20240518193100.png]]
+```csharp
+private void ShowAsociatedAnimals()
+{
+    listAnimalsInZoo.DisplayMemberPath = "Name";
+    listAnimalsInZoo.SelectedValuePath = "Id";
+    try
+    {
+        // make the query
+        string query = "select * from Animal a inner join ZooAnimal za on a.Id = za.AnimalId where za.ZooId = @ZooId";
+        // make the sql parameter command
+        SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+```
+```csharp
+try
+{
+    string query = "select * from Animal a inner join ZooAnimal za on a.Id = za.AnimalId where za.ZooId = @ZooId";
+```
 Different ways to bind ConnectionString
 
-![[Pasted image 20240619195405.png]]
-
-![[Pasted image 20240619195638.png]]
+```csharp
+InitializeComponent();
+// create a variable type string to store the ConnectionString path with the db
+string connectionString = ConfigurationManager.ConnectionStrings["WPF_ZooManager.Properties.Settings.JtokzDBConnectionString"].ConnectionString;
+// here we set our object SqlConnection with the ConnectionString
+sqlConnection = new SqlConnection(connectionString);
+```
+```csharp
+string conn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+```
 In order to be able to use this way, you just need first to set in App.Config the Source path for the db connection
 
 This in App.config

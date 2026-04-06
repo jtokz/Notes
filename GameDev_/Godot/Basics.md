@@ -1,3 +1,6 @@
+---
+tags: [lang/gdscript, area/game-dev, type/concept]
+---
 
 # Nodos:
 Godot funciona por nodos, cada nodo es como un bloque que viene con ciertas funcionalidades como:

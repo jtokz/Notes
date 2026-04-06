@@ -1,3 +1,6 @@
+---
+tags: [area/basics, type/concept]
+---
 
 *Need to do comments later*
 
@@ -7,23 +10,71 @@ Here we are talking about some principles in programming that will make our code
 When declaring variables and assigning them a name, we must try to be as clear as possible about their name and what use it will have, this will help us a lot when working with other people and so everyone will understand what use this variable has, or even ourselves if we see the code after a long time and do not remember its use
 
 Example.
-![[Pasted image 20240903124827.png]]
+```csharp
+// bad naming variables
+int n = 1;
+string s = "Jordan";
+
+// good naming
+int studentsCount = 226;
+string studentName = "Pedro";
+```
 
 ![[Pasted image 20240917182210.png]]
 
 ![[Pasted image 20240917182231.png]]
 
-![[Pasted image 20240917182242.png]]
+```csharp
+//-- Naming classes and its methods --
+class OrderProcessor
+{
+    public void ProcessOrder()
+    {
+    }
+    public void PrintOrder()
+    {
+    }
+    public void DeleteOrder()
+    {
+    }
+}
+```
 
 ![[Pasted image 20240917182322.png]]
 
 ![[Pasted image 20240917203654.png]]
 
-![[Pasted image 20240918121022.png]]
+```csharp
+// -- Code Documentation --
+/// <summary>
+/// Represents a customer with Id and Name
+/// </summary>
+public class Customer
+{
+    /// <summary>
+    /// Gets the Id of the customer
+    /// </summary>
+    public int Id { get; }
+    /// <summary>
+    /// Get or Set the Name of the customer
+    /// </summary>
+    public string Name { get; set; }
+}
+```
 ![[Pasted image 20240918115232.png]]
 ![[Pasted image 20240918121051.png]]
 ![[Pasted image 20240918121037.png]]
-![[Pasted image 20240918133345.png]]
+```csharp
+/// <summary>
+/// Gets the customer by id
+/// </summary>
+/// <param name="customerId">The id for the customer to retrieve</param>
+/// <returns>Return the customer</returns>
+public Customer GetCustomerById(int customerId)
+{
+    return new Customer { Name = "John" };
+}
+```
 ![[Pasted image 20240918133732.png]]
 
 #### Code formating and structuring
@@ -40,19 +91,75 @@ When you are working you will have similar type of objects, some objects could b
 ![[Pasted image 20240920133922.png]]
 
 Then, when you gonna use this objects you can import its content using keyword 'using' and the namespace extension, this is usually done automatically
-	![[Pasted image 20240920134434.png]]
+```csharp
+using SimpleTests.Models;
+
+namespace SimpleTest
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Customer customer = new Customer();
+        }
+    }
+}
+```
 
 #### Method structuring
 
 Maybe when we see this we think it's fine, but in this method happens a bunch of things, and is better try to do one method for each thing that this method need to do.
 
 This in order to have a code more readable, which can be modified at any time and these modifications don´t break the code
-![[Pasted image 20240920135147.png]]
+```csharp
+class OrderProcessor
+{
+    public void ProcessOrder(Order order)
+    {
+        // validate order
+        if (order.Quantity > 0)
+        {
+            // save order
+            Console.WriteLine("Order Saved!");
+            // notify customer
+            Console.WriteLine("Customer Notified!");
+        }
+    }
+}
+```
 
 So let's do that
  
  This is a better way when in a future you want to change some things on the code and do it in a controlled way
-![[Pasted image 20240920142929.png]]
+```csharp
+class OrdersProcessor
+{
+    public void ProcessOrder(Order order)
+    {
+        if (IsValid(order))
+        {
+            SaveOrder(order);
+            NotifyCustomer(order);
+        }
+    }
+
+    private bool IsValid(Order order)
+    {
+        // TODO: Validate order logic
+        return true;
+    }
+
+    private void SaveOrder(Order order)
+    {
+        // TODO: Save order logic
+    }
+
+    private void NotifyCustomer(Order order)
+    {
+        // TODO: Notify customer logic
+    }
+}
+```
 it is made in this way because when you want to use that logic anywhere else again, example, saving an order, you don´t have to duplicate that code following the dry principle, don´t repite yourself.
 We simply create an encapsulated method that handles the logic for saving, notification or whatever
 
@@ -87,7 +194,26 @@ Imagine we have this code
 How you can refactor it?
 ![[Pasted image 20240923124911.png]]
 So we can notice that we are iterating through the same List and using the same if statement so we can just simply remove all of second foreach and simply add totalPrice to the first
-![[Pasted image 20240923161115.png]]
+```csharp
+public static void PrintOrdersDetails(List<Order> orders)
+{
+    Console.WriteLine("#### Your Orders #####\n");
+    double totalPrice = 0;
+
+    foreach (var order in orders)
+    {
+        if (order.Quantity > 0)
+        {
+            Console.WriteLine($"Product: {order.ProductName}");
+            Console.WriteLine($"Order ID: {order.Id}");
+            Console.WriteLine($"Quantity: {order.Quantity}");
+            Console.WriteLine($"Price: {order.Price}");
+            totalPrice += order.Price;
+        }
+    }
+    Console.WriteLine($"Total price: {totalPrice}");
+}
+```
 This way you reduce the code and complexity giving a simpler solution
 
 Just call
@@ -107,7 +233,32 @@ Something like this
 This describes perfectly how you must to handle an exception, showing a short and clear message explaining what's going on?
 
 Other example
-![[Pasted image 20240930120656.png]]
+```csharp
+public void ReadFile(string filePath)
+{
+    try
+    {
+        string content = File.ReadAllText(filePath);
+        Console.WriteLine(content);
+    }
+    catch (FileNotFoundException ex)
+    {
+        Console.WriteLine("File not found: " + ex.Message);
+    }
+    catch (UnauthorizedAccessException ex)
+    {
+        Console.WriteLine("You don't have the permissions to access here: " + ex.Message);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("An error occurred: " + ex.Message);
+    }
+    // some common exceptions
+    // File not found
+    // Unauthorized Access
+    // Other Exception
+}
+```
 Here we covered some specific exceptions and then general exceptions, this way you provide the necessary information to the user or another developer about what's wrong with the app 
 ###### The most important thing is APP NEVER SHOULD TO CRASH
 
@@ -120,7 +271,28 @@ A class should have only one job or responsibility, this one keeps your code enc
 
 Example.
 In this example we have a class with MULTIPLE responsibilities like Adding orders, Logging orders and Notify orders, so as this principle says a class only must to have one responsibility
-![[Pasted image 20241009105449.png]]
+```csharp
+class OrderService
+{
+    List<Order> orders = new List<Order>();
+
+    public void AddOrder(Order order)
+    {
+        orders.Add(order);
+    }
+
+    // method to Log the order to a file
+    public void LogOrder(Order order)
+    {
+        Console.WriteLine($"Order {order.Id} logged.");
+    }
+
+    public void NotifyCustomer(Order order)
+    {
+        Console.WriteLine($"Order {order.Id} added.");
+    }
+}
+```
 
 Those three are entirely different responsibilities, so you know you could group them adding order, deleting order, getting an order and all of that and that would be one responsibility, but Logging has nothing to do with managing, so adding or removing them.
 So in that case we would have to split up the OrderService into multiple subclasses so that each class only has one responsibility. 
@@ -135,7 +307,21 @@ So let's refactor this class
 This way each of them is built for a single responsibility, OrderService handles the access adding, getting, removing of orders, OrderLogger logs orders, OrderNotifier notifies, now the challenge is make the program works fine again.
 
 After adding this new classes we can make that our OrderService acts as the Orchestrator handling the other classes, making first private instances of each new subclasses and making it works inside its own methods, in this order of ideas our OrderService continues being the main Handle class and could call other subclasses in order to making them works
-![[Pasted image 20241009111512.png]]
+```csharp
+class OrderService
+{
+    private List<Order> orders = new List<Order>();
+    private OrderLogger logger = new OrderLogger();
+    private OrderNotifier notifier = new OrderNotifier();
+
+    public void AddOrder(Order order)
+    {
+        orders.Add(order);
+        logger.LogOrder(order);
+        notifier.NotifyCustomer(order);
+    }
+}
+```
 #### Open/Closed
 Software entities should be Open for extensions but closed for modification. 
 
@@ -157,19 +343,61 @@ Is here to help us to achieve that we can replace our derived clases with base c
 Example.
 One example fore this would be, we got a base class called Bird, that implements a method that allows birds to fly, but we are going to add a new bird "Penguin", what happens? birds cannot fly. So, how we can say to the app that penguins are not enabled to fly, how we can block the Fly method to penguins ir order that no other programmer can call Fly method?
 
-![[Pasted image 20250126143917.png]]
-![[Pasted image 20250126143930.png]]
-![[Pasted image 20250126143942.png]]
+```csharp
+class Bird
+{
+    public virtual void Fly()
+    {
+        Console.WriteLine("Flying...");
+    }
+}
+```
+```csharp
+class Penguin : Bird
+{
+    public override void Fly()
+    {
+        throw new NotImplementedException("Penguins cannot fly");
+    }
+}
+```
+```csharp
+Bird sparrow = new Bird();
+sparrow.Fly();
+Bird penguin = new Penguin();
+penguin.Fly(); // This will throw an exception
+```
 
 So now we got a exception because penguins can't fly, to solve this problem we first need to focus in the error:
 
 All birds cannot fly, but All birds can make a sound, so we can implement an interface to manage which birds can Fly
 
-![[Pasted image 20250126144943.png]]
+```csharp
+public interface IFlyable
+{
+    void Fly();
+}
+```
 This way you can only implement this functionality to birds that can fly
 And let base Bird class only for things that all kind of birds can do, like Make a sound or something like that
-![[Pasted image 20250126145044.png]]
-![[Pasted image 20250126184157.png]]
+```csharp
+class Bird
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Kikiriki");
+    }
+}
+```
+```csharp
+// *** Liskov Substitution ***
+Bird sparrow = new Sparrow(); // store a Bird class sparrow in a Sparrow variable
+sparrow.MakeSound(); // As a bird, can make a sound but for fly
+((IFlyable)sparrow).Fly(); // we need to cast it
+
+Bird penguin = new Penguin();
+penguin.MakeSound();
+```
 This way only birds that can fly will have access to this functionality
 #### Interface Segregation
 Clients should no be forced to depend on interfaces they do not use.
@@ -178,23 +406,89 @@ If you have bloated interfaces which offer tons of functionality, but your class
 
 
 In this example, we have the Interface IWorker, which implements two methods, Work and Eat, so each one the classes that use this contract,  must be forced to implement both methods, and that would cause problems like the next one
-![[Pasted image 20250209113229.png]]
-![[Pasted image 20250209113251.png]]
+```csharp
+interface IWorker
+{
+    public void Work();
+    public void Eat();
+}
+```
+```csharp
+class Robot : IWorker
+{
+    public void Work()
+    {
+        Console.WriteLine("Robot is working");
+    }
+    public void Eat()
+    {
+        // Robots don't eat, but are forced to implement this method
+        Console.WriteLine("Robots can't eat!");
+    }
+}
+```
 Robot workers can Work but they don't need to eat, so they will be forced to make use of Eat method
 
 How we can solve this problem? splitting in two interfaces, IWorkable and IEatable, this way classes could implement just the methods that specifically need 
 ![[Pasted image 20250209114056.png]]
-![[Pasted image 20250209114110.png]]
-![[Pasted image 20250209114256.png]]
+```csharp
+class Robot : IWorkable
+{
+    public void Work()
+    {
+        Console.WriteLine("Robot is working");
+    }
+}
+```
+```csharp
+class Worker : IWorkable, IEatable
+{
+    public string? Name { get; set; }
+    public void Work()
+    {
+        Console.WriteLine("Working...");
+    }
+    public void Eat()
+    {
+        Console.WriteLine($"{Name} is eating...");
+    }
+}
+```
 
 #### Dependency Inversion
 High-level modules should depend on abstractions, not on low-level modules 
 Is used to reduce the coupling
 
 Example
-![[Pasted image 20250209151717.png]]
-![[Pasted image 20250209151742.png]]
-![[Pasted image 20250209151758.png]]
+```csharp
+public class EmailService
+{
+    public void SendEmail(string to, string subject, string body)
+    {
+        Console.WriteLine($"Sending email to {to} with subject {subject}");
+    }
+}
+```
+```csharp
+public class Notification
+{
+    private readonly EmailService _emailService;
+
+    public Notification()
+    {
+        _emailService = new EmailService();
+    }
+    public void Send(string message)
+    {
+        _emailService.SendEmail("user@example.com", "notification", message);
+    }
+}
+```
+```csharp
+// *** Dependency Inversion ***
+Notification notification = new Notification();
+notification.Send("Hola");
+```
 
 In this example, Notification class (a high-level module) directly depends on the EmailService class (a low-level module)
 This violates the dependency inversion principle because Notification is tightly coupled to EmailService
@@ -202,14 +496,58 @@ That means that if we want to make changes in EmailService we need to change thi
 
 Instead, we can make use to interfaces to uncouple the code
 
-![[Pasted image 20250210211458.png]]
+```csharp
+public interface IEmailService
+{
+    public void SendEmail(string to, string subject, string body);
+}
+```
 We can use an interface that abstracts the methods needed to send emails and thus be able to provide different implementations with different classes that inherit it.
 If you just simply create an instance of any email class inside Notification class, you will have to change code from many parts if you want to change the email service or something like that
-![[Pasted image 20250210212217.png]]
+```csharp
+public class EmailService : IEmailService
+{
+    public void SendEmail(string to, string subject, string body)
+    {
+        Console.WriteLine($"Sending email to {to} with subject {subject}");
+    }
+}
+```
 This way you abstract the logic inside EmailService and pass to notification class through IEmailService interface
-![[Pasted image 20250210212313.png]]
+```csharp
+public class Notification
+{
+    private readonly IEmailService _emailService;
+
+    public Notification(IEmailService emailService)
+    {
+        _emailService = emailService;
+    }
+    public void Send(string message)
+    {
+        _emailService.SendEmail("user@example.com", "notification", message);
+    }
+}
+```
 Like this you are injecting the dependency (EmailService class) as an IEmailService interface object through the constructor
-![[Pasted image 20250210212501.png]]
+```csharp
+public class MockEmailService : IEmailService
+{
+    public void SendEmail(string to, string subject, string body)
+    {
+        Console.WriteLine($"This is a test, sending a fake email to {to} with subject {subject}");
+    }
+}
+```
 This is also very useful to make unit test since you can inject the Mock dependency through the constructor thanks to the interface that works as a bridge between the high-level module and the low-level module (MokeEmailService in this case)
-![[Pasted image 20250210212924.png]]
+```csharp
+// *** Dependency Inversion ***
+IEmailService emailService = new EmailService();
+Notification notification = new Notification(emailService);
+notification.Send("Hola");
+
+IEmailService fakeEmailService = new MockEmailService();
+Notification fakeNotification = new Notification(fakeEmailService);
+fakeNotification.Send("This is a test, email send correctly!");
+```
 Finally, we create instances of each emailService (normal and mock) and then store them in IEmailService Objects to be able to inject them through the Notification constructor

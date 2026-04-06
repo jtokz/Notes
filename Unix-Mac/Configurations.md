@@ -1,3 +1,6 @@
+---
+tags: [area/tools, area/devops, type/config]
+---
 
 #### Ghostty config 
 

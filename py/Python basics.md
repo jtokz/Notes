@@ -1,5 +1,29 @@
+---
+tags: [lang/python, area/basics, type/concept]
+---
+
 ###### Python primitive types
- ![[Pasted image 20250318222419.png]]
+```python
+# Subscripting
+print("Hello"[2])
+
+# String
+print("123" + "456")  # Concatenation
+
+# Integer = Whole number
+print(123 + 456)
+
+# Large Integers
+print(123_456_789)
+
+# Floating point number
+pi = 3.14159
+print(pi)
+
+# Boolean
+its_true = True
+its_false = False
+```
 ##### List
 numbers = [1,2,3,4,5]
 ##### loops
@@ -17,8 +41,32 @@ numbers = [1,2,3,4,5]
 #### List comprehension
 ![[Pasted image 20250616203911.png]]
 ![[Pasted image 20250616204139.png]]
-![[Pasted image 20250616205312.png]]
-![[Pasted image 20250616210233.png]]
+
+```python
+# Generator expression example
+lines = ["hola", "adiós", "python"]
+gen = (len(line) for line in lines)
+print(gen)  # <generator object <genexpr> at 0x...>
+```
+
+```python
+# 1. Recorrerlo con for:
+for x in gen:
+    print(x)
+# → Salida: 4, 5, 6
+
+# 2. Convertirlo a lista:
+longitudes = list(gen)
+print(longitudes)  # [4, 5, 6]
+
+# 3. Usar next() manualmente:
+gen = (len(line) for line in lines)
+print(next(gen))  # 4
+print(next(gen))  # 5
+print(next(gen))  # 6
+print(next(gen))  # ¡Error! StopIteration
+```
+
 ![[Pasted image 20250616210250.png]]
 ![[Pasted image 20250616210455.png]]
 
@@ -58,7 +106,28 @@ numbers = [1,2,3,4,5]
 
 ##### Dictionaries
 
-![[Pasted image 20250624132219.png]]
+```python
+programming_dictionary = {
+    "function": "a piece of code that you can easily call over and over again."
+}
+
+# adding an item
+programming_dictionary["loop"] = "the action of doing something over and over again."
+
+# declare an empty dictionary
+my_new_dictionary = {}
+my_new_dictionary = dict()
+
+# wipe an existing dictionary
+programming_dictionary = {}
+
+# edit an item
+programming_dictionary["Key"] = "an insect"
+
+# loop into a dictionary
+for key in programming_dictionary:
+    print(programming_dictionary[key])
+```
 
 - Dictionary lookup
 ![[Pasted image 20250621131423.png]]

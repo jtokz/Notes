@@ -1,3 +1,7 @@
+---
+tags: [lang/python, area/basics, type/reference]
+---
+
 - Use # to comment
 - in py you can just set a name for a variable without specify why kind of object it is
 - CTRL + / --> Conver a line of code in comment

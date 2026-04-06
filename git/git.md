@@ -1,4 +1,6 @@
-#basics #dev 
+---
+tags: [area/devops, type/reference]
+---
 
 Here i'm going to make a directory of bash and git commands
 

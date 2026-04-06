@@ -1,3 +1,7 @@
+---
+tags: [lang/python, area/algorithms, area/ai, type/concept, course/cs50ai]
+---
+
 TODO: Bring here all info about this topic
 
 Terminology

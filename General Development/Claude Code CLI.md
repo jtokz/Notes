@@ -1,3 +1,7 @@
+---
+tags: [area/tools, type/reference]
+---
+
 # Claude Code CLI
 
 > Claude directamente en la terminal, con acceso real al filesystem, shell y git.

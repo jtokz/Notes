@@ -1,4 +1,8 @@
-All this concepts would be simply to explain, other more advanced concepts will be in [[General Concepts]] #basics #dev 
+---
+tags: [area/basics, type/moc]
+---
+
+All this concepts would be simply to explain, otros conceptos más avanzados en [[General Concepts]]
 
 
 TODO: Put here all concepts and terms separated by categories

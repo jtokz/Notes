@@ -1,4 +1,7 @@
-#basics #datatypes 
+---
+tags: [lang/csharp, area/basics, type/concept]
+---
+
 Variables - Una variable se compone de: el tipo de dato, un nombre que se le va a signar y los datos que va a llevar y la sintaxis para declarar una variable, hay varios tipos de variables y algunos de ellos son:
 
 
@@ -31,15 +34,60 @@ Datatypes and their limits
 
 First of all, variables can be pretty much declared outside of a method, but also inside of a method
 
-![[Untitled.png]]
+```csharp
+using System.Xml;
+
+namespace Study
+{
+    public class Lecture
+    {
+        int age = 15; // This is a variable of type integer
+
+        public static void Main(string[] args)
+        {
+            age = 20; // new value gets assigned
+            Console.WriteLine(age); // output will be 20
+        }
+    }
+}
+```
 
 You can change the value of a variable writing bellow a new value so when you call the variable it will show the new value
 
-![[Untitled 1.png]]
+```csharp
+using System.Xml;
+
+namespace Study
+{
+    public class Lecture
+    {
+        int age; // default value assigned = 0
+
+        public static void Main(string[] args)
+        {
+            Console.WriteLine(age); // output will be 0
+        }
+    }
+}
+```
 
 When you don’t assigned a value, it will be assigned the default value (=0). This if it’s c# because another programm’s default value is null
 
-![[Untitled 2.png]]
+```csharp
+namespace Study
+{
+    public class Lecture
+    {
+        public static void Main(string[] args)
+        {
+            //Creating the variable inside of the method
+            //The variable can only get used inside of this method
+            int age = 15;
+            Console.WriteLine(age); // output will be 15
+        }
+    }
+}
+```
 
 Now this variable will only be available within that particular method where it was declared in, and if we want to use it in another method now, it will not be visible. So we cannot use it there and it will result in errors.
 
@@ -83,7 +131,24 @@ string username = “Jason1995” - allows multiple letters and unicodes
 
   
 
-![[Untitled 3.png]]
+```csharp
+namespace Strings
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string myname = "Jordan";
+            string message = "My name is " + myname;
+            string capsMessage = message.ToUpper();
+
+            Console.WriteLine(message);
+            Console.WriteLine(capsMessage);
+            Console.Read();
+        }
+    }
+}
+```
 
 Cuando asignamos una variable de algún tipo esta variable se vuelve del tipo que le asignamos y por lo tanto adquiere las propiedades de ese tipo, por ejemplo si hacemos una variable tipo String, esta variable tendrá acceso a dichos métodos (methods) a través de la sintaxis de punto como por ejemplo ToUpper, que capitaliza el data que hemos introducido en esta variable
 

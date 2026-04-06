@@ -1,3 +1,7 @@
+---
+tags: [lang/python, area/ai, type/concept, course/cs50ai]
+---
+
 Search
 ![[Pasted image 20250525105018.png]]
 Knowledge
