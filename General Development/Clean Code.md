@@ -110,7 +110,7 @@ namespace SimpleTest
 
 Maybe when we see this we think it's fine, but in this method happens a bunch of things, and is better try to do one method for each thing that this method need to do.
 
-This in order to have a code more readable, which can be modified at any time and these modifications don´t break the code
+This in order to have a code more readable, which can be modified at any time and these modifications don't break the code
 ```csharp
 class OrderProcessor
 {
